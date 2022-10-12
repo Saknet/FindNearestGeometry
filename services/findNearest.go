@@ -1,16 +1,12 @@
-package main
+package services
 
 import (
 	"math"
+
+	model "github.com/ForumViriumHelsinki/WPS-FindNearestFeature/models"
 )
 
-type Feature_data struct {
-	Latitude  float64
-	Longitude float64
-	Key       string
-}
-
-func FindNearestFeature(data FindNearestInput) string {
+func FindNearestFeature(data model.FindNearestInput) string {
 	closestDistance := 9999999999.9
 	closest := data.Feature_data[0].Key
 
