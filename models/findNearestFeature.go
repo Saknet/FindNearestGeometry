@@ -9,3 +9,7 @@ type FindNearestInput struct {
 	Point_latitude  float64 `json:"point_latitude" binding:"required"`
 	Point_Longitude float64 `json:"point_Longitude" binding:"required"`
 }
+
+type FindNearestResponse struct {
+	Nearest string `json:"nearest" xml:"nearest"`
+}

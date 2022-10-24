@@ -6,7 +6,7 @@ import (
 	model "github.com/ForumViriumHelsinki/WPS-FindNearestFeature/models"
 )
 
-func FindNearestFeature(data model.FindNearestInput) string {
+func FindNearestFeature(data model.FindNearestInput) model.FindNearestResponse {
 	closestDistance := 9999999999.9
 	closest := data.Feature_data[0].Key
 
@@ -21,7 +21,7 @@ func FindNearestFeature(data model.FindNearestInput) string {
 
 	}
 
-	return closest
+	return model.FindNearestResponse{Nearest: closest}
 }
 
 func getDistance(x1 float64, y1 float64, x2 float64, y2 float64) float64 {
