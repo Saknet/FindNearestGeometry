@@ -13,9 +13,10 @@ func FindNearestFeature(data model.FindNearestInput) model.FindNearestResponse {
 	for i := 0; i < len(data.Feature_data); i++ {
 
 		distance := getDistance(data.Point_Longitude, data.Point_latitude, data.Feature_data[i].Longitude, data.Feature_data[i].Latitude)
+
 		if distance < closestDistance {
 			closestDistance = distance
-			closest = data.Feature_data[0].Key
+			closest = data.Feature_data[i].Key
 
 		}
 
