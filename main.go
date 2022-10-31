@@ -14,7 +14,7 @@ func main() {
 	r.SetTrustedProxies(nil)
 
 	r.Use(mw.CORSMiddleware())
-	r.POST("/wps/findnearestfeature", controller.FindNearestFeature)
+	r.POST("/findnearestfeature", controller.FindNearestFeature)
 
 	r.Run("localhost:8087")
 
