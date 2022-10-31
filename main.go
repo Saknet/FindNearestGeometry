@@ -11,7 +11,6 @@ import (
 func main() {
 
 	r := gin.Default()
-	r.SetTrustedProxies(nil)
 
 	r.Use(mw.CORSMiddleware())
 	r.POST("/wps/findnearestfeature", controller.FindNearestFeature)
