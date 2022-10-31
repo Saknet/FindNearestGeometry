@@ -41,5 +41,5 @@ func FindFromGeoJSONPoint(data model.GeoJSONPointRequest) model.GeoJSONPointResp
 
 	}
 
-	return model.GeoJSONPointResponse{Nearest: closest}
+	return model.GeoJSONPointResponse{NearestFeature: closest}
 }

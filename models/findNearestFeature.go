@@ -17,7 +17,7 @@ type GeoJSONPointRequest struct {
 }
 
 type GeoJSONPointResponse struct {
-	Nearest GeometryPoint `json:"nearest"`
+	NearestFeature GeometryPoint `json:"nearest_feature"`
 }
 
 type FindNearestResponse struct {
