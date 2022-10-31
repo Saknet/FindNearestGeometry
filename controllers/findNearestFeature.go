@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"log"
 	"net/http"
 
@@ -11,18 +13,19 @@ import (
 )
 
 func FindNearestFeature(c *gin.Context) {
-	// Validate input
-	//	var input TimeseriesInput
 
-	var input model.FindNearestInput
+	data, err := ioutil.ReadAll(c.Request.Body)
 
-	// Call BindJSON to bind the received JSON to
-	// newAlbum.
-	if err := c.BindJSON(&input); err != nil {
+	if err != nil {
 		log.Println(err)
-		return
 	}
 
-	c.JSON(http.StatusOK, service.FindNearestFeature(input))
+	var input model.GeoJSONPointRequest
+
+	if err := json.Unmarshal(data, &input); err != nil {
+		log.Println(err)
+	}
+
+	c.JSON(http.StatusOK, service.FindFromGeoJSONPoint(input))
 
 }

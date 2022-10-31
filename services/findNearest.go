@@ -6,25 +6,6 @@ import (
 	model "github.com/ForumViriumHelsinki/WPS-FindNearestFeature/models"
 )
 
-func FindNearestFeature(data model.FindNearestInput) model.FindNearestResponse {
-	closestDistance := 9999999999.9
-	closest := data.Feature_data[0].Key
-
-	for i := 0; i < len(data.Feature_data); i++ {
-
-		distance := getDistance(data.Point_Longitude, data.Point_latitude, data.Feature_data[i].Longitude, data.Feature_data[i].Latitude)
-
-		if distance < closestDistance {
-			closestDistance = distance
-			closest = data.Feature_data[i].Key
-
-		}
-
-	}
-
-	return model.FindNearestResponse{Nearest: closest}
-}
-
 func getDistance(x1 float64, y1 float64, x2 float64, y2 float64) float64 {
 	lon1 := x1 * math.Pi / 180
 	lon2 := x2 * math.Pi / 180
@@ -42,4 +23,23 @@ func getDistance(x1 float64, y1 float64, x2 float64, y2 float64) float64 {
 
 	return c * 6371000
 
+}
+
+func FindFromGeoJSONPoint(data model.GeoJSONPointRequest) model.GeoJSONPointResponse {
+	closestDistance := 9999999999.9
+	closest := data.Features[0]
+
+	for i := 0; i < len(data.Features); i++ {
+
+		distance := getDistance(data.Point_longitude, data.Point_latitude, data.Features[i].Coordinates[0], data.Features[i].Coordinates[1])
+
+		if distance < closestDistance {
+			closestDistance = distance
+			closest = data.Features[i]
+
+		}
+
+	}
+
+	return model.GeoJSONPointResponse{Nearest: closest}
 }
