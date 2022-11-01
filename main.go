@@ -2,6 +2,7 @@ package main
 
 import (
 	controller "github.com/ForumViriumHelsinki/WPS-FindNearestFeature/controllers"
+	"github.com/spf13/viper"
 
 	mw "github.com/ForumViriumHelsinki/WPS-FindNearestFeature/middlewares"
 
@@ -16,6 +17,9 @@ func main() {
 	r.Use(mw.CORSMiddleware())
 	r.POST("/findnearestfeature", controller.FindNearestFeature)
 
-	r.Run("localhost:8087")
+	viper.SetConfigFile(".env")
+	viper.ReadInConfig()
+
+	r.Run(viper.Get("PATH").(string))
 
 }
