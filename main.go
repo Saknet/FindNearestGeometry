@@ -1,10 +1,10 @@
 package main
 
 import (
-	controller "github.com/ForumViriumHelsinki/WPS-FindNearestFeature/controllers"
+	controller "github.com/forumviriumhelsinki/findnearestgeometry/controllers"
 	"github.com/spf13/viper"
 
-	mw "github.com/ForumViriumHelsinki/WPS-FindNearestFeature/middlewares"
+	mw "github.com/forumviriumhelsinki/findnearestgeometry/middlewares"
 
 	"github.com/gin-gonic/gin"
 )
@@ -15,7 +15,7 @@ func main() {
 	r.SetTrustedProxies(nil)
 
 	r.Use(mw.CORSMiddleware())
-	r.POST("/findnearestfeature", controller.FindNearestFeature)
+	r.POST("/findnearestgeometry", controller.FindNearestGeometry)
 
 	viper.SetConfigFile(".env")
 	viper.ReadInConfig()

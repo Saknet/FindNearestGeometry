@@ -3,7 +3,7 @@ package services
 import (
 	"math"
 
-	model "github.com/ForumViriumHelsinki/WPS-FindNearestFeature/models"
+	model "github.com/forumviriumhelsinki/findnearestgeometry/models"
 )
 
 func getDistance(x1 float64, y1 float64, x2 float64, y2 float64) float64 {
@@ -27,19 +27,19 @@ func getDistance(x1 float64, y1 float64, x2 float64, y2 float64) float64 {
 
 func FindFromGeoJSONPoint(data model.GeoJSONPointRequest) model.GeoJSONPointResponse {
 	closestDistance := 9999999999.9
-	closest := data.Features[0]
+	closest := data.Geometries[0]
 
-	for i := 0; i < len(data.Features); i++ {
+	for i := 0; i < len(data.Geometries); i++ {
 
-		distance := getDistance(data.Point_longitude, data.Point_latitude, data.Features[i].Coordinates[0], data.Features[i].Coordinates[1])
+		distance := getDistance(data.Point_longitude, data.Point_latitude, data.Geometries[i].Coordinates[0], data.Geometries[i].Coordinates[1])
 
 		if distance < closestDistance {
 			closestDistance = distance
-			closest = data.Features[i]
+			closest = data.Geometries[i]
 
 		}
 
 	}
 
-	return model.GeoJSONPointResponse{NearestFeature: closest}
+	return model.GeoJSONPointResponse{NearestGeometry: closest}
 }

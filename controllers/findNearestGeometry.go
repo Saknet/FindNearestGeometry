@@ -6,13 +6,13 @@ import (
 	"log"
 	"net/http"
 
-	model "github.com/ForumViriumHelsinki/WPS-FindNearestFeature/models"
-	service "github.com/ForumViriumHelsinki/WPS-FindNearestFeature/services"
+	model "github.com/forumviriumhelsinki/findnearestgeometry/models"
+	service "github.com/forumviriumhelsinki/findnearestgeometry/services"
 
 	"github.com/gin-gonic/gin"
 )
 
-func FindNearestFeature(c *gin.Context) {
+func FindNearestGeometry(c *gin.Context) {
 
 	data, err := ioutil.ReadAll(c.Request.Body)
 

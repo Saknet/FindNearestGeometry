@@ -11,13 +11,13 @@ type FindNearestInput struct {
 }
 
 type GeoJSONPointRequest struct {
-	Features        []GeometryPoint `json:"features" binding:"required"`
+	Geometries      []GeometryPoint `json:"geometries" binding:"required"`
 	Point_latitude  float64         `json:"point_latitude" binding:"required"`
 	Point_longitude float64         `json:"point_longitude" binding:"required"`
 }
 
 type GeoJSONPointResponse struct {
-	NearestFeature GeometryPoint `json:"nearest_feature"`
+	NearestGeometry GeometryPoint `json:"nearest_geometry"`
 }
 
 type FindNearestResponse struct {

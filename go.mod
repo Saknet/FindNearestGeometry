@@ -1,4 +1,4 @@
-module github.com/ForumViriumHelsinki/WPS-FindNearestFeature
+module github.com/forumviriumhelsinki/findnearestgeometry
 
 go 1.19
 
